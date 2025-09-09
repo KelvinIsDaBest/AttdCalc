@@ -263,7 +263,11 @@
 
             var hoursAbsentable = maxHours * 0.2;
             var hoursBeforeBar = hoursAbsentable - absentHours;
-            document.getElementById("hoursBeforeBar").innerHTML = "Hours Absent Before Barred: " + hoursBeforeBar;
+
+            let hours = Math.floor(hoursBeforeBar);
+            let minutes = Math.round((hoursBeforeBar - hours) * 60);
+
+            document.getElementById("hoursBeforeBar").innerHTML = "Hours Absent Before Barred: " + hours + "h " + minutes + "m";
         }
 
         function updateHours() {
@@ -382,56 +386,56 @@
                 <label>The number of classes attended, absent and leave</label>
 
                 <div class="class-type">
-                    <h3>🔬 Practical</h3>
-                    <div class="input-group">
-                        <div>
-                            <label>Attended:</label>
-                            <input type="number" id="practicalAttend" required />
-                        </div>
-                        <div>
-                            <label>Absent:</label>
-                            <input type="number" id="practicalAbsent" required />
-                        </div>
-                        <div>
-                            <label>Leave:</label>
-                            <input type="number" id="practicalLeave" value="0" required />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="class-type">
-                    <h3>📖 Tutorial</h3>
-                    <div class="input-group">
-                        <div>
-                            <label>Attended:</label>
-                            <input type="number" id="tutorialAttend" required />
-                        </div>
-                        <div>
-                            <label>Absent:</label>
-                            <input type="number" id="tutorialAbsent" required />
-                        </div>
-                        <div>
-                            <label>Leave:</label>
-                            <input type="number" id="tutorialLeave" value="0" required />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="class-type">
                     <h3>🎓 Lecture</h3>
                     <div class="input-group">
                         <div>
                             <label>Attended:</label>
-                            <input type="number" id="lectureAttend" required />
+                            <input type="number" id="lectureAttend" max=14 min=0 required />
                         </div>
                         <div>
                             <label>Absent:</label>
-                            <input type="number" id="lectureAbsent" required />
+                            <input type="number" id="lectureAbsent" max=14 min=0 required />
                         </div>
                         <div>
                             <label>Leave:</label>
-                            <input type="number" id="lectureLeave" value="0" required />
+                            <input type="number" id="lectureLeave" value="0" max=14 min=0 required />
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="class-type">
+                <h3>📖 Tutorial</h3>
+                <div class="input-group">
+                    <div>
+                        <label>Attended:</label>
+                        <input type="number" id="tutorialAttend" max=14 min=0 required />
+                    </div>
+                    <div>
+                        <label>Absent:</label>
+                        <input type="number" id="tutorialAbsent" max=14 min=0 required />
+                    </div>
+                    <div>
+                        <label>Leave:</label>
+                        <input type="number" id="tutorialLeave" value="0" max=14 min=0 required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="class-type">
+                <h3>🔬 Practical</h3>
+                <div class="input-group">
+                    <div>
+                        <label>Attended:</label>
+                        <input type="number" id="practicalAttend" max=14 min=0 required />
+                    </div>
+                    <div>
+                        <label>Absent:</label>
+                        <input type="number" id="practicalAbsent" max=14 min=0 required />
+                    </div>
+                    <div>
+                        <label>Leave:</label>
+                        <input type="number" id="practicalLeave" value="0" max=14 min=0 required />
                     </div>
                 </div>
             </div>
@@ -441,8 +445,8 @@
                 <label>Semester Type</label>
                 <select name="semestertype" id="semestertype" onchange="updateWeeks()">
                     <option value="empty" id="empty" disabled selected>Select Semester Type</option>
-                    <option value="long" id="long">Long Sem (12 Weeks)</option>
-                    <option value="short" id="short">Short Sem (5 Weeks)</option>
+                    <option value="long" id="long">Long Sem (14 Weeks)</option>
+                    <option value="short" id="short">Short Sem (7 Weeks)</option>
                 </select>
 
                 <label>Total weeks before bar list releases</label>
